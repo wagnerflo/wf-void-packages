@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ ! -e void-packages/xbps-src ]; then
+    git submodule update --init
+fi
+
 for pkg in srcpkgs/*; do
     tgt=void-packages/${pkg}
     rm -rf ${tgt}
