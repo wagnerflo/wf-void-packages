@@ -1,0 +1,9 @@
+#!/bin/sh
+
+for pkg in srcpkgs/*; do
+    tgt=void-packages/${pkg}
+    rm -rf ${tgt}
+    cp -r ${pkg} ${tgt}
+done
+
+exec void-packages/xbps-src -m $(pwd)/masterdir -H $(pwd)/hostdir "$@"
